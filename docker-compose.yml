@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  web-client:
+    build: ./web-client
+    command: yarn start
+    volumes:
+      - ./web-client:/web-client
+    ports:
+      - 3000:3000
+
+  server:
+    build: ./server
+    command: rails s -b 0.0.0.0
+    volumes:
+      - ./server:/server
+    ports:
+      - 3001:3000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: db
+    environment:
+      POSTGRES_USER: climat
+      POSTGRES_PASSWORD: climat
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:
