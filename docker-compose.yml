@@ -3,6 +3,7 @@ services:
 
   web-client:
     build: ./web-client
+    container_name: climat_web_client
     command: yarn start
     volumes:
       - ./web-client:/web-client
@@ -11,9 +12,12 @@ services:
 
   server:
     build: ./server
+    container_name: climat_server
     command: rails s -b 0.0.0.0
     volumes:
       - ./server:/server
+    env_file:
+      - ./server/.env
     ports:
       - 3001:3000
     depends_on:
@@ -21,7 +25,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: db
+    container_name: climat_postgres
     environment:
       POSTGRES_USER: climat
       POSTGRES_PASSWORD: climat
