@@ -4,13 +4,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   
-  # Неймспейс для маршрутов, приходящих от Системы управления
-  namespace :hardware do
+  namespace :api do
+    # Неймспейс для маршрутов, приходящих от Системы управления
+    namespace :hardware do
 
-  end
+    end
 
-  # Неймспейс для пользователя
-  namespace :user do
-    
+    # Неймспейс для пользователя
+    namespace :user do
+
+    end
+
+    # Управление сессией
+    resources :session, only: %i[create update destory]
   end
 end
