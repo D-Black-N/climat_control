@@ -25,7 +25,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: climat_postgres
+    container_name: climat_db
     environment:
       POSTGRES_USER: climat
       POSTGRES_PASSWORD: climat
