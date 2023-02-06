@@ -7,8 +7,6 @@ services:
     command: yarn start
     volumes:
       - ./web-client:/web-client
-    ports:
-      - 3000:3000
 
   server:
     build: ./server
@@ -18,8 +16,6 @@ services:
       - ./server:/server
     env_file:
       - ./server/.env
-    ports:
-      - 3001:3000
     depends_on:
       - db
 
@@ -31,6 +27,18 @@ services:
       POSTGRES_PASSWORD: climat
     volumes:
       - postgres:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server/config/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./server/log/nginx.log:/var/log/nginx/nginx.log
+    depends_on:
+      - server
+      - web-client
 
 volumes:
   postgres:
