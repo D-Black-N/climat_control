@@ -1,0 +1,31 @@
+.main {
+  width: 100%;
+  height: auto;
+}
+
+.greenhouses-page, .grennhouse-page-main {
+  max-width: 1180px;
+  min-width: 830px;
+  margin: 0 auto;
+}
+
+.greenhouse-modal {
+  margin-left: auto;
+  width: auto;
+}
+
+.greenhouses-list {
+  border-collapse: separate;
+  border-spacing: 15px 0;
+}
+
+.grennhouse-page-main {
+  width: 100%;
+  height: auto;
+}
+
+.greenhouse-page-header {
+  height: auto;
+  background-color: #e1f0fd;
+  padding: 10px;
+}
