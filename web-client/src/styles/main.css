@@ -29,3 +29,8 @@
   background-color: #e1f0fd;
   padding: 10px;
 }
+
+.login-form {
+  width: 90%;
+  margin: 20px 0;
+}

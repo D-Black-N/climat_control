@@ -15,17 +15,27 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/logo.png';
 import Logout from '../../images/logout.png';
+import { useCookies, Cookies } from 'react-cookie';
+import { logout } from '../../api/api';
 
-const Header = () => {
-  const links = [
-    { href: 'greenhouses', label: 'Теплицы' },
-    { href: 'monitoring', label: 'Мониторинг' },
-    { href: 'settings', label: 'Настройки' },
-  ]
+const Header = ({ setIsLogged }) => {
+  const links = [{ href: 'greenhouses', label: 'Теплицы' }]
+  const [removeCookie] = useCookies();
+  const cookie = new Cookies();
 
   const handleClickLogOut = (event) => {
     event.preventDefault();
-    console.log(event.target)
+    const headers = {
+      'X-CSRF-Token': cookie.get('CSRF-TOKEN')
+    }
+    logout(headers)
+      .then(response => {
+        removeCookie('_token');
+        setIsLogged(false);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   return (
@@ -36,7 +46,14 @@ const Header = () => {
             <Link to='/'><Image src={Logo} height='70px' margin={'0 15px'} /></Link>
           </Box>
           {links.map((link, index) =>
-            <Tab _selected={{ color: '#151588', borderBottom: '3px solid #151588' }} fontSize='16pt' padding='0' borderBottom={'3px solid #37b940'} margin={'0 15px'}>
+            <Tab
+              _selected={{ color: '#151588', borderBottom: '3px solid #151588' }}
+              fontSize='16pt'
+              padding='0'
+              borderBottom={'3px solid #37b940'}
+              margin={'0 15px'}
+              key={index}
+            >
               <Link to={link.href} className='header-link'>{link.label}</Link>
             </Tab>          
           )}

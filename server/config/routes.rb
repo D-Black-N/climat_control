@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
 
     # Управление сессией
-    resources :session, only: %i[create update destory]
+    post 'login', to: 'sessions#create'
+    delete 'logout', to: 'sessions#destroy'
+    get 'initialize', to: 'users#initialize_client'
   end
 end
