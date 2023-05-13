@@ -8,12 +8,17 @@ const AuthForm = ({ setIsLogged }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
+    const body = {
+      session: {
+        login: event.target.login.value,
+        password: event.target.password.value
+      }
+    }
     event.target.reset();
     const headers = {
       'X-CSRF-Token': cookie.get('CSRF-TOKEN')
     }
-    login(data, headers)
+    login(body, headers)
       .then(response => {
         if (response.status === 201 && cookie.get('_token')) {
           setIsLogged(true);

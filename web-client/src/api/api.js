@@ -11,3 +11,5 @@ export const login = (params, headers) => post(`${BaseUrl}/login`, params, { hea
 export const logout = (headers) => destroy(`${BaseUrl}/logout`, { headers: headers });
 
 export const getCSRFToken = () => get(`${BaseUrl}/initialize`);
+
+export const createGreenHouse = (body, headers) => post(`${BaseUrl}/user/green_houses`, body, { headers: headers })

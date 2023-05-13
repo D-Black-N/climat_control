@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
     # Неймспейс для пользователя
     namespace :user do
-
+      resources :green_houses
     end
 
     # Управление сессией
