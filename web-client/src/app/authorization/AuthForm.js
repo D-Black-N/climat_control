@@ -15,7 +15,7 @@ const AuthForm = ({ setIsLogged }) => {
     }
     login(data, headers)
       .then(response => {
-        if (response.status === 201 && cookies._token) {
+        if (response.status === 201 && cookie.get('_token')) {
           setIsLogged(true);
         }
       })

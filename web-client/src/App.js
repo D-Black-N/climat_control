@@ -13,7 +13,7 @@ const App = () => {
 
   const checkLogin = () => {
     console.log(cookies._token)
-    if (cookies._token !== undefined) {
+    if (cookies._token != undefined) {
       setIsLogged(true);
     }
   }
