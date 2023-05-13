@@ -1,9 +1,9 @@
 import { Button, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react';
-import cookie, { useCookies, Cookies } from 'react-cookie';
+import { useCookies, Cookies } from 'react-cookie';
 import { login } from '../../api/api';
 
 const AuthForm = ({ setIsLogged }) => {
-  const [cookies, getCookie] = useCookies();
+  const [cookies, setCookie, removeCookie] = useCookies();
   const cookie = new Cookies();
 
   const handleSubmit = (event) => {

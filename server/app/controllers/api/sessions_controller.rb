@@ -11,7 +11,7 @@ module Api
       token = JsonWebToken.encode(user_id: user.id)                 # Генерация токена
       expired_time = ENV['SESSION_EXPIRED'].to_i.minutes.from_now   # Установка времени окончания сессии
       user.sessions.create(token: token, expired: expired_time)     # Создание сессии для пользователя
-      cookies['_token'] = { value: token, expires: expired_time, same_site: 'None', }   # Запись токена сессии в куки
+      cookies['_token'] = { value: token, expires: expired_time }   # Запись токена сессии в куки
       render status: :created
     end
 

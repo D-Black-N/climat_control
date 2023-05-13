@@ -10,7 +10,7 @@ module Api
     # Вызов колбека формирования токена CSRF
     before_action :set_csrf_cookie, :check_authenticity
     # Для инициализации пропущена проверка авторизации
-    skip_before_action :check_authenticity, only: :initialize_client
+    # skip_before_action :check_authenticity, only: :initialize_client
 
     # Когда пользователь заходит на страницу необходимо получить токен, поэтому этот метод оставлен
     def initialize_client; end

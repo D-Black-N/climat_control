@@ -29,7 +29,7 @@ const DateSelectorForm = () => {
         <Input
           as={Button}
           type={'submit'}
-          mt={5}
+          mt={4}
           bg={'#37b940'}
           value={'Составить'}
           _hover={{ cursor: 'pointer', backgroundColor: '#278f2e' }}

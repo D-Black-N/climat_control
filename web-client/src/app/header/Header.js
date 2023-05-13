@@ -20,7 +20,7 @@ import { logout } from '../../api/api';
 
 const Header = ({ setIsLogged }) => {
   const links = [{ href: 'greenhouses', label: 'Теплицы' }]
-  const [removeCookie] = useCookies();
+  const [cookies, setCookie, removeCookie] = useCookies(['_token']);
   const cookie = new Cookies();
 
   const handleClickLogOut = (event) => {

@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import { RangeDatepicker } from "chakra-dayzed-datepicker";
 import { useState } from "react";
 import DateSelectorForm from "../../helpers/DateSelectorForm";
 import GraphVisualization from "../../helpers/GraphVisualization";
